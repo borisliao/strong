@@ -2,9 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import { File } from '../components/File.tsx';
 import { Graph } from '../components/Graph';
+import { WorkoutSelector } from '../components/WorkoutSelector';
 
 ---
 <Layout>
 	<File client:load/>
+	<WorkoutSelector client:load/>
 	<Graph client:load/>
 </Layout>
