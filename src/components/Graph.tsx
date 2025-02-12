@@ -56,7 +56,7 @@ const data = [
 
 export const Graph = () => {
   return (
-    <ResponsiveContainer aspect={4.0 / 3.0}>
+    <ResponsiveContainer aspect={7.0 / 3.0} height="100%">
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
