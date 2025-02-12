@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { File } from '../components/File.tsx';
+import { Graph } from '../components/Graph';
 
 ---
 <Layout>
 	<File client:load/>
+	<Graph client:load/>
 </Layout>
