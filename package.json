@@ -1,0 +1,25 @@
+{
+  "name": "strong",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "arquero": "^8.0.0",
+    "astro": "^5.2.5",
+    "plotly.js-dist": "^3.0.0",
+    "react": "^19.0.0",
+    "react-aria-components": "^1.6.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^0.5.0"
+  }
+}
