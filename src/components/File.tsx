@@ -27,7 +27,9 @@ export const File = () => {
       </FileTrigger>
       <Button
         onPress={async () => {
-          const res = await fetch("strong/strong_example.csv");
+          const res = await fetch(
+            `${import.meta.env.BASE_URL}/strong_example.csv`
+          );
           const text = await res.text();
           setCSV(text);
         }}
