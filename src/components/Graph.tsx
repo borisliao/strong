@@ -8,6 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useWorkoutSelection } from "../store/useWorkoutSelection";
 
 const data = [
   {
@@ -55,6 +56,12 @@ const data = [
 ];
 
 export const Graph = () => {
+  const { exerciseName } = useWorkoutSelection();
+
+  if (!exerciseName) {
+    return null;
+  }
+
   return (
     <ResponsiveContainer aspect={7.0 / 3.0} height="100%">
       <LineChart data={data}>
