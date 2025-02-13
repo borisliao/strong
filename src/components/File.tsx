@@ -12,12 +12,28 @@ export const File = () => {
         acceptedFileTypes={[".csv"]}
         onSelect={(file) => {
           if (file && file.length > 0) {
-            setCSV(file[0].name);
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              if (event.target?.result) {
+                setCSV(event.target.result as string);
+              }
+            };
+
+            reader.readAsText(file[0]);
           }
         }}
       >
         <Button>Select a file</Button>
       </FileTrigger>
+      <Button
+        onPress={async () => {
+          const res = await fetch("strong/strong_example.csv");
+          const text = await res.text();
+          setCSV(text);
+        }}
+      >
+        Use Example File
+      </Button>
       {csv && (
         <p>CSV last updated on {new Date(dateUpdated).toLocaleString()}</p>
       )}
