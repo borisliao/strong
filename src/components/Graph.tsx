@@ -72,9 +72,8 @@ export const Graph = () => {
     Reps: number;
   }
 
-  const data: WorkoutData[] = fromCSV(csv)
-    .params({ exerciseName: exerciseName })
-    .filter((d: WorkoutData) => d["Exercise Name"] === exerciseName)
+  const data = fromCSV(csv)
+    .filter(escape((d: WorkoutData) => d["Exercise Name"] === exerciseName))
     .objects();
   console.log(data);
 
