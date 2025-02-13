@@ -9,6 +9,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useWorkoutSelection } from "../store/useWorkoutSelection";
+import { useCSV } from "../store/useCSV";
+import { useStore } from "zustand";
+import { fromCSV, escape } from "arquero";
 
 const data = [
   {
@@ -56,30 +59,43 @@ const data = [
 ];
 
 export const Graph = () => {
-  const { exerciseName } = useWorkoutSelection();
+  const csv = useCSV((state) => state.csv);
+  const { exerciseName } = useStore(useWorkoutSelection);
 
-  if (!exerciseName) {
+  if (!exerciseName || !csv) {
     return null;
   }
+  interface WorkoutData {
+    Date: string;
+    "Exercise Name": string;
+    Weight: number;
+    Reps: number;
+  }
+
+  const data: WorkoutData[] = fromCSV(csv)
+    .params({ exerciseName: exerciseName })
+    .filter((d: WorkoutData) => d["Exercise Name"] === exerciseName)
+    .objects();
+  console.log(data);
 
   return (
     <ResponsiveContainer aspect={7.0 / 3.0} height="100%">
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="Date" />
         <YAxis />
         <Tooltip isAnimationActive={false} />
         <Legend />
         <Line
           type="monotone"
-          dataKey="pv"
+          dataKey="Weight"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
           isAnimationActive={false}
         />
         <Line
           type="monotone"
-          dataKey="uv"
+          dataKey="Reps"
           stroke="#82ca9d"
           isAnimationActive={false}
         />
