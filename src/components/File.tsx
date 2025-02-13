@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { FileTrigger, Button } from "react-aria-components";
+import { useCSV } from "../store/useCSV";
 
 export const File = () => {
-  let [file, setFile] = useState<string | null>(null);
+  const { csv, dateUpdated, setCSV } = useCSV();
+  useEffect(() => {}, [csv]);
 
   return (
     <>
       <FileTrigger
+        acceptedFileTypes={[".csv"]}
         onSelect={(file) => {
           if (file && file.length > 0) {
-            setFile(file[0].name);
+            setCSV(file[0].name);
           }
         }}
       >
         <Button>Select a file</Button>
       </FileTrigger>
-      {file && file}
+      {csv && (
+        <p>CSV last updated on {new Date(dateUpdated).toLocaleString()}</p>
+      )}
     </>
   );
 };
