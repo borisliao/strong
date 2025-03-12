@@ -1,5 +1,5 @@
 ---
-import "./src/styles/global.css";
+import "../styles/global.css";
 ---
 <!doctype html>
 <html lang="en">
@@ -22,12 +22,7 @@ import "./src/styles/global.css";
     </style>
   </head>
   <body
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "1em",
-    }}
+    class="flex flex-col items-center gap-4"
   >
     <slot />
   </body>
