@@ -12,6 +12,8 @@ import { useCSV } from "../store/useCSV";
 import { fromCSV } from "arquero";
 import { useStore } from "zustand";
 
+import "../styles/ComboBox.css";
+
 export const WorkoutSelector = () => {
   const csv = useCSV((state) => state.csv);
   const exerciseName = useStore(
