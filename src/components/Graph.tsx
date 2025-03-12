@@ -59,7 +59,7 @@ export const Graph = () => {
       <div style={{ maxHeight: "300px", overflowY: "auto" }}>
         {data.map((entry, index) => (
           <details key={index}>
-            <summary>
+            <summary className="dark:text-white">
               Entry {index + 1} - {(entry as WorkoutData).Date}
             </summary>
             <pre>{JSON.stringify(entry, null, 2)}</pre>
