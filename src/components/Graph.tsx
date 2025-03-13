@@ -62,7 +62,9 @@ export const Graph = () => {
             <summary className="dark:text-white">
               Entry {index + 1} - {(entry as WorkoutData).Date}
             </summary>
-            <pre>{JSON.stringify(entry, null, 2)}</pre>
+            <pre className="dark:text-white">
+              {JSON.stringify(entry, null, 2)}
+            </pre>
           </details>
         ))}
       </div>
